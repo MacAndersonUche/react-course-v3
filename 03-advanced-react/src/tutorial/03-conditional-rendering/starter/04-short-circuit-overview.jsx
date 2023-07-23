@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 const ShortCircuitOverview = () => {
-  return <h2>short circuit overview</h2>;
+  const [text, setText] = useState("mac")
+  const [isClicked, setIsClicked] = useState(false)
+  return <h2>{text || <p>hey</p>}</h2>;
 };
 export default ShortCircuitOverview;
