@@ -252,4 +252,20 @@ ul {
   margin: 0 auto;
   margin-top: 1rem;
 }
+
+.link {
+  margin: 10px 10px;
+  display: none;
+}
+
+.shownLinks {
+  margin: 10px 10px;
+  display: inline;
+}
+
+.container {
+  /* height: 20px;
+  width: 100px; */
+  background-color: #063251;
+}
 /* ============= PROJECT CSS =============== */
