@@ -9,9 +9,10 @@ import {
 } from "./actions";
 
 const AppContext = createContext();
-
+const cartMap = new Map();
+cartItems.forEach((item) => cartMap.set(item.id, item));
 const initialState = {
-  cart: new Map(cartItems),
+  cart: cartMap,
 };
 
 export const AppProvider = ({ children }) => {

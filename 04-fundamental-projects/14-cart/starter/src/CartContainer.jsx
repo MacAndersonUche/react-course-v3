@@ -1,12 +1,9 @@
 import CartItem from "./CartItem";
 import { useGlobalContext } from "./context";
-import cartItems from "./data";
 const CartContainer = () => {
-  const cartArray = [...cartItems];
-
   const { state, clearCart } = useGlobalContext();
 
-  if (cartArray.length === 0) {
+  if (state.cart.length === 0) {
     return (
       <section className="cart">
         {/* cart header */}
@@ -17,6 +14,12 @@ const CartContainer = () => {
       </section>
     );
   }
+
+  let results = [];
+
+  state.cart.forEach((cartItem) => {
+    results.push(<CartItem key={cartItem.id} {...cartItem} />);
+  });
   return (
     <section className="cart">
       {/* cart header */}
@@ -24,14 +27,7 @@ const CartContainer = () => {
         <h2>your bag</h2>
       </header>
       {/* cart items */}
-      <div>
-        {/* {state.cart.map((cartItem) => {
-          return <CartItem key={cartItem.id} {...cartItem} />;
-        })} */}
-        {cartArray.map((cartItem) => {
-          return <CartItem key={cartItem.id} {...cartItem} />;
-        })}
-      </div>
+      <div>{results}</div>
       {/* cart footer */}
       <footer>
         <hr />
