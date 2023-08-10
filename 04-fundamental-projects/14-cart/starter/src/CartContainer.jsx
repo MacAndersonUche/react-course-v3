@@ -1,7 +1,19 @@
 import CartItem from "./CartItem";
+import { useState, useEffect } from "react";
 import { useGlobalContext } from "./context";
 const CartContainer = () => {
   const { state, clearCart } = useGlobalContext();
+  const [price, setPrice] = useState(1);
+
+  useEffect(() => {
+    let val = 1;
+
+    state.cart.forEach((item) => {
+      val += Number(item.amount) * Number(item.price);
+    });
+
+    setPrice(Math.round(val, 2));
+  }, [state]);
 
   if (state.cart.length === 0) {
     return (
@@ -33,7 +45,7 @@ const CartContainer = () => {
         <hr />
         <div>
           <h5 className="cart-total">
-            total <span>$10</span>
+            total <span>${price}</span>
           </h5>
         </div>
         <button className="btn btn-hipster" onClick={clearCart}>
