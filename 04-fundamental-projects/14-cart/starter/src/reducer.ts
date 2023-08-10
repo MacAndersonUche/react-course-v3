@@ -8,24 +8,15 @@ interface CartItem {
 
 
 
-//track total quantity
-//track total price
-//refactor to use MAP methods
-
 export const reducer = (state: { cart: any; }, action: { type: any; payload: any; }) => {
     switch (action.type) {
         case "CLEAR_CART":
             return { ...state, cart: [] };
         case "REMOVE_CART_ITEM":
-            let newArr: CartItem[] = []
 
-            state.cart.forEach((item: any) => {
-                if (item.id !== action.payload) {
-                    newArr.push(item)
-                }
-            })
+            state.cart.delete(action.payload)
 
-            return { ...state, cart: newArr };
+            return { ...state, };
         case "INCREASE_QTY":
             let increased: CartItem[] = []
 
